@@ -5,7 +5,7 @@ pipeline {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
         GIT_BRANCH = 'master'  // Branche à utiliser dans Git
         COMPOSE_FILE = 'docker-compose.yml'
-        DOCKER_IMAGE = 'amin/jenkins' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
+        DOCKER_IMAGE = 'jenkins/jenkins:lts ' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
     }
 
     stages {
