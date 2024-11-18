@@ -4,8 +4,7 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
         GIT_BRANCH = 'master'  // Branche à utiliser dans Git
-        COMPOSE_FILE = 'docker-compose.yml'
-        DOCKER_IMAGE = 'jenkins/jenkins:lts ' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
+        DOCKER_IMAGE = 'amin/jenkins' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
     }
 
     stages {
@@ -26,14 +25,6 @@ pipeline {
                         docker push ${DOCKER_IMAGE}:latest  // Push de l'image sur Docker Hub
                         '''
                     }
-                }
-            }
-        }
-
-        stage('Docker Compose Up') {
-            steps {
-                script {
-                    sh 'docker-compose -f ${COMPOSE_FILE} up -d'  // Lancement de Docker Compose
                 }
             }
         }
@@ -61,4 +52,3 @@ pipeline {
         }
     }
 }
-

@@ -2,7 +2,9 @@ version: '3'  # Utilisez la version 3 de Docker Compose
 
 services:
   jenkins:
-    image: 'jenkins/jenkins:lts'  # L'image officielle Jenkins LTS
+    build:
+      dockerfile: Dockerfile
+      context: .
     container_name: "jenkins"
     ports:  # Utilisez 'ports' au lieu de 'port'
       - '8080:8080'
