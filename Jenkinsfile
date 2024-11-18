@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Authentification Docker Hub avec les credentials
-                    withCredentials([usernamePassword(credentialsId: 'amin', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh '''
                         docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}  // Login à Docker Hub
                         docker build -t ${DOCKER_IMAGE}:latest .  // Build de l'image Docker
