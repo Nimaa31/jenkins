@@ -5,12 +5,27 @@ pipeline {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
         GIT_BRANCH = 'main'
         COMPOSE_FILE = 'docker-compose.yml'
+        DOCKER_IMAGE = 'dockerhub_user/jenkins-image' // Remplacez par votre nom d'image Docker Hub
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh '''
+                        docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+                        docker build -t ${DOCKER_IMAGE}:latest .
+                        docker push ${DOCKER_IMAGE}:latest
+                        '''
+                    }
+                }
             }
         }
 
