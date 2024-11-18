@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
-        GIT_BRANCH = 'main'
+        GIT_BRANCH = 'master'
         COMPOSE_FILE = 'docker-compose.yml'
         DOCKER_IMAGE = 'dockerhub_user/jenkins-image' // Remplacez par votre nom d'image Docker Hub
     }
