@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
-        GIT_BRANCH = 'master'
+        GIT_BRANCH = 'master'  // Branche à utiliser dans Git
         COMPOSE_FILE = 'docker-compose.yml'
-        DOCKER_IMAGE = 'dockerhub_user/jenkins-image' // Remplacez par votre nom d'image Docker Hub
+        DOCKER_IMAGE = '/home/amin/jenkins' // Nom d'image Docker Hub
     }
 
     stages {
@@ -18,11 +18,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Authentification Docker Hub avec les credentials
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh '''
-                        docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-                        docker build -t ${DOCKER_IMAGE}:latest .
-                        docker push ${DOCKER_IMAGE}:latest
+                        docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}  // Login à Docker Hub
+                        docker build -t ${DOCKER_IMAGE}:latest .  // Build de l'image Docker
+                        docker push ${DOCKER_IMAGE}:latest  // Push de l'image sur Docker Hub
                         '''
                     }
                 }
@@ -32,7 +33,7 @@ pipeline {
         stage('Docker Compose Up') {
             steps {
                 script {
-                    sh 'docker-compose -f ${COMPOSE_FILE} up -d'
+                    sh 'docker-compose -f ${COMPOSE_FILE} up -d'  // Lancement de Docker Compose
                 }
             }
         }
@@ -60,3 +61,4 @@ pipeline {
         }
     }
 }
+
