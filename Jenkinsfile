@@ -18,7 +18,8 @@ pipeline {
             steps {
                 script {
                     // Authentification Docker Hub avec les credentials
-                   # withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                   # withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')])
+			 {
                         sh '''
 			docker login -u 'amin' -p '220702Nimaa-'  https://index.docker.io/v1/
 
