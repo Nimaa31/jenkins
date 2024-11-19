@@ -4,7 +4,7 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nimaa31/jenkins.git'
         GIT_BRANCH = 'master'  // Branche à utiliser dans Git
-        DOCKER_IMAGE = 'amin/jenkins' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
+        DOCKER_IMAGE = 'jenkins/jenkins:lts' // Nom de l'image Docker (ajoutez votre Docker Hub utilisateur ici)
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
                     // Authentification Docker Hub avec les credentials
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
                         sh '''
-			docker login -u 'amin' -p '220702Nimaa-'  https://index.docker.io/v1/
+			docker login -u "$DOCKER_USER"  -p "$DOCKER_PASS"  https://index.docker.io/v1/
 
                         docker build -t ${DOCKER_IMAGE}:latest .  // Build de l'image Docker
                         docker push ${DOCKER_IMAGE}:latest  // Push de l'image sur Docker Hub
