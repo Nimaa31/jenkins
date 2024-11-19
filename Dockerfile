@@ -20,7 +20,7 @@ USER jenkins
 
 # Définir un volume pour les configurations de Jenkins et les builds
 VOLUME /var/jenkins_home
-
+#RUN chmod 777 /var/jenkins_home 
 # Exposer les ports nécessaires pour Jenkins
 EXPOSE 8080
 EXPOSE 50000
