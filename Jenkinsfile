@@ -47,9 +47,15 @@ stages {
                         sh '''
                         git config --global user.name "${GIT_USER}"
                         git config --global user.email "${GIT_MAIL}"
-                        git add .
+
+                        if ! git diff-index --quiet HEAD --; then
+			git add .
                         git commit -m "Automated commit from Jenkins"
                         git push https://${GIT_USER}:${GIT_TOKEN}@github.com/Nimaa31/jenkins.git
+		
+			else
+				echo "No changes to commit"
+                	fi
                         '''
                     }
                 }
