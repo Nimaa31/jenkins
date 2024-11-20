@@ -43,7 +43,7 @@ stages {
         stage('Push to GitHub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'amin', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                    withCredentials([usernamePassword(credentialsId: 'GIT', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                         sh '''
                         git config --global user.name "${GIT_USER}"
                         git config --global user.email "${GIT_MAIL}"
