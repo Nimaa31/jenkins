@@ -1,10 +1,12 @@
-Nov 20, 2024 1:53:15 PM hudson.remoting.Launcher createEngine
+Nov 20, 2024 2:36:01 PM hudson.remoting.Launcher createEngine
 INFO: Setting up agent: agent1
-Nov 20, 2024 1:53:15 PM hudson.remoting.Engine startEngine
+Nov 20, 2024 2:36:01 PM hudson.remoting.Engine startEngine
 INFO: Using Remoting version: 3261.v9c670a_4748a_9
-Nov 20, 2024 1:53:15 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+Nov 20, 2024 2:36:01 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
 INFO: Using /home/amin/jenkins/remoting as a remoting work directory
-Nov 20, 2024 1:53:15 PM hudson.remoting.Launcher$CuiListener status
+Nov 20, 2024 2:36:02 PM hudson.remoting.Launcher$CuiListener status
 INFO: WebSocket connection open
-Nov 20, 2024 1:53:15 PM hudson.remoting.Launcher$CuiListener status
+Nov 20, 2024 2:36:02 PM hudson.remoting.Launcher$CuiListener status
 INFO: Connected
+Nov 20, 2024 2:37:02 PM hudson.remoting.RemoteInvocationHandler$Unexporter reportStats
+INFO: rate(1min) = 48.7±55.6/sec; rate(5min) = 94.9±40.4/sec; rate(15min) = 106.0±25.3/sec; rate(total) = 10.2±32.2/sec; N = 11
